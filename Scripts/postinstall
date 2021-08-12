@@ -1,0 +1,18 @@
+#! /bin/sh
+## postinstall
+
+
+sudo defaults write /Library/Preferences/com.apple.loginwindow.plist autoLoginUser admin
+sudo chown -r root:staff /Library/Preferences/com.apple.loginwindow.plist
+
+sudo launchctl load -w /Library/LaunchAgents/com.blackglove.createuser.plist
+
+sudo chown root /Library/BlackGlove/fixedUser.sh
+sudo chmod 4755 /Library/BlackGlove/fixedUser.sh
+
+echo 'admin ALL=(ALL) NOPASSWD: /Library/BlackGlove/fixedUser.sh' >> /etc/sudoers
+
+
+
+
+exit 0
