@@ -16,13 +16,12 @@ KillAll zoom.us
 ## Verify Admin user is logged in
 until [ "$currentUser" = "admin" ] && [ -f "$accountRead" ]
 do
-  sleep 2
+  sleep 1
 done
 
 #Kill AssetID and Launch BGUSer
 
 KillAll AssetID
-  sleep 1
 /usr/bin/open /Applications/BGUser.app
 
 readPreference() {
@@ -38,7 +37,7 @@ fi
 until  [ $cleanup = true ]
 do
   echo "waiting for user creation..."
-sleep 5
+sleep 1
 readPreference
 done
 
@@ -76,7 +75,7 @@ rm /Library/LaunchDaemons/com.blackglove.*
 
 mv /Users/Shared/com.apple.SetupAssistant.plist /Users/"$decodedUser"/Library/Preferences/com.apple.SetupAssistant.plist
 chown "$decodedUser":staff /Users/"$decodedUser"/Library/Preferences/com.apple.SetupAssistant.plist
-sleep 5
+sleep 1
 osascript -e 'tell app "System Events" to restart'
 
 
